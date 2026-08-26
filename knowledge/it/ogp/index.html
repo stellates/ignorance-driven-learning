@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OGP | IT Knowledge</title>
+  <meta name="description" content="WebページをSNSなどで共有したときに、タイトル・説明・画像などをカード表示するためのメタ情報。">
+  <link rel="stylesheet" href="../../../styles.css">
+</head>
+<body>
+  <main class="container detail-page">
+    <nav class="breadcrumb"><a href="../../../">Home</a><span>/</span><a href="../../">Knowledge</a><span>/</span><a href="../">IT</a><span>/</span><span>OGP</span></nav>
+    <article class="detail-card">
+      <p class="eyebrow">IT / Web / SNS</p>
+      <h1>OGP</h1>
+      <p class="reading">オージーピー</p>
+      <p class="detail-summary">WebページをSNSなどで共有したときに、タイトル・説明・画像などをカード表示するためのメタ情報。</p>
+      <section><h2>どういう意味？</h2><p>OGP（Open Graph Protocol）は、Webページの&lt;head&gt;内に og:title、og:description、og:image、og:url などを記述し、SNSやメッセージアプリがリンク先をカード表示するときに使う情報を渡す仕組み。</p></section>
+      <section><h2>実運用の注意</h2><p>特に og:image は相対パスではなく、https://から始まる絶対URLにしておく方が安全。ブラウザでは相対パスで画像表示できても、SNSクローラでは正しく取得されない場合がある。またXなどはOGP情報をキャッシュするため、修正してもすぐ反映されないことがある。</p></section>
+      <section><h2>例</h2><p><code>&lt;meta property="og:image" content="https://example.com/assets/og/page.png" /&gt;</code></p></section>
+      <section><h2>また聞いた回数</h2><p>1回</p></section>
+      <div class="tags"><span>#ogp</span><span>#open-graph</span><span>#sns</span><span>#x</span><span>#meta</span><span>#seo</span></div>
+    </article>
+  </main>
+</body>
+</html>
