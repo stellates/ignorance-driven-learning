@@ -6,6 +6,43 @@ Ignorance Driven Learning is a user-owned knowledge repository that grows whenev
 
 Instead of generating a huge knowledge base up front, this project keeps only human-reviewed knowledge that came from real questions, confusion, mistakes, and re-learning.
 
+## Start here
+
+This repository is designed to be used together with an AI assistant such as ChatGPT, Claude, Gemini, Codex, or another tool that can read this repository.
+
+For a new AI conversation, give the AI access to this repository and start with a prompt like this:
+
+```text
+Read this repository first, especially AGENTS.md and the documents under docs/.
+Follow the project rules before answering or changing files.
+I want to continue using Ignorance Driven Learning from here.
+```
+
+If the AI can access GitHub directly, point it to this repository and ask it to read the repository before continuing. If it cannot access GitHub directly, provide `AGENTS.md`, `docs/architecture.md`, and `docs/workflow.md` as context.
+
+After that, use the AI normally. For example:
+
+```text
+opt-inって何？
+```
+
+The expected behavior is:
+
+- If the knowledge already exists, the AI should use it as context and treat the question as a repeat question when appropriate.
+- If it is new knowledge, the AI should explain it conversationally first.
+- The AI must not silently register new durable knowledge.
+- When the human explicitly approves registration, the AI should save it according to the repository rules.
+
+The conversation is not the source of truth. Important project rules and accepted knowledge should live in this repository so another AI or another chat can continue from the same state.
+
+## AI handoff documents
+
+- [`AGENTS.md`](./AGENTS.md) — rules AI agents must follow when reading or modifying this repository.
+- [`docs/architecture.md`](./docs/architecture.md) — current information architecture, data ownership, and page structure.
+- [`docs/workflow.md`](./docs/workflow.md) — operational flow for new questions, repeated questions, registration, publishing, and future learning features.
+
+When project behavior changes, update these documents rather than relying only on chat history.
+
 ## Core loop
 
 1. Ask AI about something you do not understand.
@@ -45,19 +82,22 @@ Structured knowledge
 ## Repository structure
 
 ```text
+AGENTS.md          AI operating rules
+docs/              architecture and workflow documentation
 data/
-  terms/          accepted knowledge entries
-  quizzes/        accepted quiz questions
-  history/        learning / review events
+  terms/           accepted knowledge entries
+  quizzes/         accepted quiz questions
+  history/         learning / review events
+knowledge/         knowledge browsing pages
 profile/           portable AI personalization material
 reports/           periodic learning analysis
 schema/            JSON schemas
-web/               GitHub Pages frontend
+index.html         project entry page
 ```
 
 ## Status
 
-Early prototype / base repository. The first goal is intentionally small: add an accepted term as JSON and make it visible on GitHub Pages.
+Early prototype / base repository. The current goal is to make the repository itself sufficient context for a human and a new AI conversation to continue the same learning workflow.
 
 ## Why this exists
 
