@@ -1,0 +1,16 @@
+{
+  "id": "dgx-spark",
+  "term": "DGX Spark",
+  "reading": "ディージーエックス スパーク",
+  "category": "IT / AI / Hardware",
+  "summary": "NVIDIAが提供する、机上に置ける小型のAI開発向けコンピュータ。128GBのユニファイドメモリを備え、大規模なローカルAIモデルを扱える。",
+  "explanation": "DGX Sparkは、NVIDIAのGB10 Grace Blackwell Superchipを搭載した小型AIコンピュータ。CPUとGPUが128GBのユニファイドメモリを共有するため、一般的なGPU搭載PCのようにVRAM容量だけで扱えるモデルサイズが強く制約されにくい。大規模モデルをローカルに載せやすく、CUDA、TensorRT-LLM、PyTorchなどNVIDIAのAI開発環境をそのまま使えるのが特徴。ただし、大きなモデルが載ることと高速に推論できることは別。メモリ帯域は273GB/sで、Llama 3.3 70BのようなDenseモデルでは実測約4〜5 tok/s程度の例があり、70Bだから必ず快適というわけではない。一方、GPT-OSS 120BのようなMoEかつ低精度形式に最適化されたモデルでは約40 tok/s前後の実測例もあり、モデル構造や最適化方式によって性能差が非常に大きい。つまりDGX Sparkは『巨大LLMを何でも爆速に動かす箱』というより、『128GBの共有メモリとNVIDIAのAI開発スタックを机上で使える開発機』と考えると分かりやすい。",
+  "example": "Llama 3.3 70Bは載せられても推論速度は約4〜5 tok/sの例がある一方、GPT-OSS 120Bでは約40 tok/s前後の実測例がある。モデルの総パラメータ数だけでは速度を判断できない。",
+  "asked_count": 1,
+  "confused_with": [],
+  "tags": ["dgx-spark", "nvidia", "blackwell", "gb10", "local-llm", "cuda", "unified-memory", "moe", "ai-hardware"],
+  "status": "accepted",
+  "public": true,
+  "created_at": "2026-08-26",
+  "updated_at": "2026-08-26"
+}
