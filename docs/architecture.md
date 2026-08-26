@@ -89,7 +89,28 @@ data/
 `data/terms/index.json` is the registry of knowledge IDs.
 Each `<id>.json` file is the canonical data for that entry.
 
-HTML is a presentation layer. Long term, list pages and detail pages should be generated from the JSON source rather than maintained manually.
+HTML is a presentation layer.
+
+### Current implementation status
+
+There is currently **no automatic static-site generator** that turns new JSON entries into category/detail HTML.
+
+This means:
+
+- a new `data/terms/<id>.json` file can exist without a corresponding `/knowledge/<category>/<id>/` page;
+- adding an ID to `data/terms/index.json` does not by itself guarantee that the category list page changes;
+- category pages and detail pages currently require explicit HTML updates.
+
+Long term, the intended architecture is to generate list/detail pages from JSON so the source of truth remains singular.
+
+```text
+JSON source of truth
+→ generated category pages
+→ generated detail pages
+→ generated OGP metadata/images
+```
+
+Until that generator exists, the data layer and presentation layer can temporarily drift and must be checked separately.
 
 ## Knowledge record
 
