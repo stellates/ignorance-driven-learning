@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/schema/term.schema.json",
+  "title": "Ignorance Driven Learning - Term",
+  "type": "object",
+  "required": ["id", "term", "summary", "category", "status", "public"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+    "term": { "type": "string", "minLength": 1 },
+    "reading": { "type": "string" },
+    "category": { "type": "string", "minLength": 1 },
+    "summary": { "type": "string", "minLength": 1 },
+    "explanation": { "type": "string" },
+    "example": { "type": "string" },
+    "asked_count": { "type": "integer", "minimum": 1 },
+    "confused_with": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+    "tags": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+    "status": { "enum": ["draft", "tested", "accepted", "rejected"] },
+    "public": { "type": "boolean" },
+    "created_at": { "type": "string", "format": "date" },
+    "updated_at": { "type": "string", "format": "date" }
+  },
+  "additionalProperties": true
+}
