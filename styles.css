@@ -11,6 +11,8 @@ body {
   min-height: 100vh;
 }
 
+a { color: inherit; }
+
 .container {
   width: min(1040px, calc(100% - 32px));
   margin: 0 auto;
@@ -23,9 +25,14 @@ body {
   margin-bottom: 48px;
 }
 
+.hero.compact {
+  padding-top: 28px;
+}
+
 .eyebrow,
 .meta,
-#count {
+#count,
+.section-head > span {
   font-size: 0.8rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -46,6 +53,23 @@ h1 {
   color: #555550;
 }
 
+.breadcrumb {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+  font-size: 0.9rem;
+  color: #6c6c68;
+}
+
+.breadcrumb a {
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
 .section-head {
   display: flex;
   align-items: baseline;
@@ -62,11 +86,23 @@ h1 {
   gap: 16px;
 }
 
-.card {
+.card,
+.detail-card {
   background: white;
   border: 1px solid #deded8;
   border-radius: 18px;
   padding: 24px;
+}
+
+.card-link {
+  display: block;
+  text-decoration: none;
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+
+.card-link:hover {
+  transform: translateY(-2px);
+  border-color: #bdbdb5;
 }
 
 .card h3 {
@@ -80,7 +116,8 @@ h1 {
   font-size: 0.9rem;
 }
 
-.card > p:not(.reading) {
+.card > p:not(.reading),
+.detail-card p {
   line-height: 1.7;
 }
 
@@ -91,4 +128,39 @@ h1 {
   margin-top: 20px;
   color: #73736e;
   font-size: 0.8rem;
+}
+
+.detail-page {
+  width: min(860px, calc(100% - 32px));
+}
+
+.detail-card {
+  margin-top: 32px;
+  padding: clamp(28px, 5vw, 56px);
+}
+
+.detail-card h1 {
+  font-size: clamp(3rem, 9vw, 6rem);
+  margin-bottom: 6px;
+}
+
+.detail-summary {
+  font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+  line-height: 1.6 !important;
+  margin: 28px 0 44px;
+}
+
+.detail-card section {
+  padding-top: 28px;
+  margin-top: 28px;
+  border-top: 1px solid #e5e5df;
+}
+
+.detail-card h2 {
+  margin: 0 0 10px;
+  font-size: 1.15rem;
+}
+
+code {
+  overflow-wrap: anywhere;
 }
