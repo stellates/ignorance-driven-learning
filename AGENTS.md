@@ -22,6 +22,28 @@ The core idea is human-curated, ignorance-driven learning:
 - Presentation files such as HTML/CSS are derived views, not the canonical knowledge source.
 - Learning reports and profile files are derived from accumulated learning history.
 
+## Current implementation status
+
+Do not assume that derived web pages are generated automatically.
+
+At the current stage:
+
+- adding `data/terms/<id>.json` does **not** automatically create a knowledge detail page;
+- adding an ID to `data/terms/index.json` does **not** automatically update category pages;
+- category pages and individual knowledge HTML currently need to be updated explicitly;
+- there is no implemented build pipeline yet that regenerates static HTML from the JSON source.
+
+Long term, the intended direction is:
+
+```text
+JSON knowledge
+→ generated category/list pages
+→ generated individual knowledge pages
+→ generated OGP metadata/images
+```
+
+Until that build step exists, treat JSON registration and web-surface updates as separate tasks.
+
 ## Knowledge lifecycle
 
 When the user asks about a term:
