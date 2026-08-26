@@ -1,0 +1,16 @@
+{
+  "id": "ogp",
+  "term": "OGP",
+  "reading": "オージーピー",
+  "category": "IT / Web / SNS",
+  "summary": "WebページをSNSなどで共有したときに、タイトル・説明・画像などをカード表示するためのメタ情報。",
+  "explanation": "OGP（Open Graph Protocol）は、Webページの<head>内にog:title、og:description、og:image、og:urlなどを記述し、SNSやメッセージアプリがリンク先をカード表示するときに使う情報を渡す仕組み。特にog:imageは相対パスではなく、https://から始まる絶対URLにしておく方が安全。ブラウザでは相対パスで画像表示できても、SNSクローラでは正しく取得されない場合がある。またXなどはOGP情報をキャッシュするため、修正してもすぐ反映されないことがある。",
+  "example": "<meta property=\"og:image\" content=\"https://example.com/assets/og/page.png\" />",
+  "asked_count": 1,
+  "confused_with": [],
+  "tags": ["ogp", "open-graph", "sns", "x", "meta", "seo"],
+  "status": "accepted",
+  "public": true,
+  "created_at": "2026-08-26",
+  "updated_at": "2026-08-26"
+}
