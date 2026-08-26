@@ -1,0 +1,41 @@
+name: Build knowledge pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'data/terms/**'
+      - 'scripts/build.mjs'
+      - '.github/workflows/build-knowledge.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Build static knowledge pages
+        run: node scripts/build.mjs
+
+      - name: Commit generated pages
+        run: |
+          if git diff --quiet -- knowledge; then
+            echo "No generated changes."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add knowledge
+          git commit -m "Build knowledge pages"
+          git push
