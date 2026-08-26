@@ -28,6 +28,7 @@ jobs:
       - name: Build static knowledge pages
         run: node scripts/build.mjs
 
+      # Generated HTML is committed so GitHub Pages can serve it directly.
       - name: Commit generated pages
         run: |
           if git diff --quiet -- knowledge; then
