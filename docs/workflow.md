@@ -4,7 +4,7 @@
 
 This repository grows through conversation and human approval.
 
-The intended workflow is:
+The current workflow is:
 
 ```text
 User question
@@ -12,7 +12,9 @@ User question
 → clarification / refinement
 → human approval
 → structured knowledge entry
-→ public page
+→ push
+→ GitHub Actions
+→ generated public page
 → later reuse for quiz / reports / personalization / social sharing
 ```
 
@@ -26,25 +28,24 @@ When the user asks about a concept that does not yet exist:
 4. Wait until the user explicitly says to register/save/adopt it.
 5. Add a new JSON entry under `data/terms/`.
 6. Add the ID to `data/terms/index.json`.
-7. Update the public presentation layer explicitly if the entry should appear on the site.
+7. Push the canonical data change.
+8. Let GitHub Actions run `scripts/build.mjs` and regenerate the knowledge pages.
 
-### Important current limitation
-
-Steps 5 and 6 do **not** automatically produce or update HTML today.
-
-Until a generator/build step is implemented, registering knowledge and surfacing it on the web are separate tasks:
+The normal registration flow is now:
 
 ```text
 Register knowledge
 ├─ add/update `data/terms/<id>.json`
 └─ add/update `data/terms/index.json`
 
-Surface on website
-├─ update category/list HTML
-└─ create/update individual detail HTML
+Automatic publication build
+├─ GitHub Actions detects the change
+├─ runs `node scripts/build.mjs`
+├─ regenerates `knowledge/`
+└─ commits generated HTML
 ```
 
-Do not claim that a newly registered item will appear on the site merely because its JSON and index entry exist.
+Do not manually create or patch generated detail/category HTML as the normal way to register knowledge.
 
 ## 2. Repeated concept
 
@@ -56,6 +57,7 @@ When the user asks again about a concept that already exists:
 4. Update `updated_at` when the learning state or content changes.
 5. Do not create a duplicate file.
 6. If the user is confusing it with another concept, consider adding that relation to `confused_with`.
+7. Push the JSON change; the build pipeline will regenerate affected knowledge pages.
 
 A repeated question is meaningful evidence that the concept may not be retained yet.
 
@@ -67,20 +69,27 @@ If later conversation produces a better explanation:
 2. Update the relevant fields in the existing JSON.
 3. Keep the explanation concise enough to reuse publicly, but complete enough to remain useful.
 4. Prefer user-tested wording over generic AI-generated wording.
+5. Do not edit generated HTML as the durable fix.
+6. Push the JSON change and let the generator update the site.
 
 ## 4. Public knowledge pages
 
-Accepted public knowledge should appear under a category route such as:
+Accepted public knowledge is generated under category routes such as:
 
 ```text
 /knowledge/it/<term>/
 ```
 
 The individual page is the preferred link target for external sharing.
-
 Category pages exist for discovery and browsing.
 
-At the current stage these pages are maintained explicitly. Future work should replace this duplication with a JSON-driven generator.
+The generator currently creates:
+
+- `/knowledge/index.html`;
+- category indexes such as `/knowledge/it/index.html`;
+- detail pages such as `/knowledge/it/dgx-spark/index.html`.
+
+For content changes, edit the JSON source. For rendering/layout changes, edit `scripts/build.mjs` or shared styles and rebuild.
 
 ## 5. OGP workflow
 
@@ -91,6 +100,7 @@ When OGP generation is added:
 3. Prefer a simple reusable visual template.
 4. The OGP image may contain a small owner/avatar icon, term name, and one-line summary.
 5. Treat OGP images as derived assets, not canonical knowledge.
+6. Integrate OGP generation into the same JSON-driven build path rather than manually maintaining each page.
 
 ## 6. Quiz workflow
 
