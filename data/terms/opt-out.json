@@ -1,0 +1,16 @@
+{
+  "id": "opt-out",
+  "term": "opt-out",
+  "reading": "オプトアウト",
+  "category": "IT / Web / Privacy",
+  "summary": "最初は配信や利用などが有効で、利用者が後から停止・拒否を選ぶ方式。",
+  "explanation": "ITやWebの文脈では、メール配信・データ利用・通知などが最初から有効な状態にあり、利用者が『停止する』『参加しない』と選ぶことで対象から外れる方式を指す。opt は『選ぶ』という意味を持ち、opt out は『外れる側を選ぶ』という感覚で使われる。",
+  "example": "最初から届いているメールマガジンで、配信停止リンクを押して受信をやめる。",
+  "asked_count": 1,
+  "confused_with": ["opt-in"],
+  "tags": ["consent", "privacy", "email", "web"],
+  "status": "accepted",
+  "public": true,
+  "created_at": "2026-08-26",
+  "updated_at": "2026-08-26"
+}
