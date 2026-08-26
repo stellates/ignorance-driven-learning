@@ -43,6 +43,30 @@ The conversation is not the source of truth. Important project rules and accepte
 
 When project behavior changes, update these documents rather than relying only on chat history.
 
+## How publishing works
+
+Accepted knowledge is stored as JSON under `data/terms/`. The public knowledge pages are generated from that data.
+
+```text
+AI conversation
+→ human approval
+→ `data/terms/<id>.json`
+→ `data/terms/index.json`
+→ push to `main`
+→ GitHub Actions
+→ `scripts/build.mjs`
+→ generated `knowledge/` pages
+```
+
+In normal operation, humans and AIs should not manually maintain generated HTML under `knowledge/`.
+
+- Change knowledge content in `data/terms/*.json`.
+- Change the registry in `data/terms/index.json`.
+- Change page generation in `scripts/build.mjs`.
+- Let GitHub Actions rebuild and commit the generated pages.
+
+In short: **commit the ignorance; the site grows from the data.**
+
 ## Core loop
 
 1. Ask AI about something you do not understand.
@@ -88,7 +112,9 @@ data/
   terms/           accepted knowledge entries
   quizzes/         accepted quiz questions
   history/         learning / review events
-knowledge/         knowledge browsing pages
+scripts/
+  build.mjs        static knowledge page generator
+knowledge/         generated knowledge browsing pages
 profile/           portable AI personalization material
 reports/           periodic learning analysis
 schema/            JSON schemas
@@ -97,7 +123,7 @@ index.html         project entry page
 
 ## Status
 
-Early prototype / base repository. The current goal is to make the repository itself sufficient context for a human and a new AI conversation to continue the same learning workflow.
+Early prototype / base repository. JSON-driven static knowledge-page generation and the GitHub Actions build pipeline are implemented. OGP generation, quizzes, reports, and richer learning-state automation are still future work.
 
 ## Why this exists
 
