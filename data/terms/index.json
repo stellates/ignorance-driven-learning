@@ -1,5 +1,6 @@
 [
   "opt-in",
   "opt-out",
-  "ogp"
+  "ogp",
+  "dgx-spark"
 ]
