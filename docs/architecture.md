@@ -11,7 +11,7 @@ The repository is not just an IT glossary. It is intended to grow into a user-ow
 ```text
 /
 ├── knowledge/
-│   └── it/
+│   └── <category>/
 │       └── <term>/
 ├── quiz/          # future
 ├── reports/       # future public/derived views
@@ -31,7 +31,7 @@ Responsibilities:
 
 ### `/knowledge/`
 
-Knowledge area top page.
+Generated knowledge area top page.
 
 Responsibilities:
 
@@ -40,7 +40,7 @@ Responsibilities:
 
 ### `/knowledge/<category>/`
 
-Category page.
+Generated category page.
 
 Example:
 
@@ -51,12 +51,12 @@ Example:
 Responsibilities:
 
 - list accepted/public entries for the category;
-- support later search/filter/sort features;
-- link to individual knowledge pages.
+- link to individual knowledge pages;
+- later support search/filter/sort features.
 
 ### `/knowledge/<category>/<term>/`
 
-Individual knowledge page.
+Generated individual knowledge page.
 
 Examples:
 
@@ -64,53 +64,85 @@ Examples:
 /knowledge/it/opt-in/
 /knowledge/it/opt-out/
 /knowledge/it/ogp/
+/knowledge/it/dgx-spark/
 ```
 
 Responsibilities:
 
 - display one accepted knowledge entry;
-- provide a stable canonical public URL;
+- provide a stable public URL;
 - act as the primary social-sharing target;
 - eventually contain per-entry OGP metadata and generated OGP imagery.
 
 ## Data architecture
 
-Canonical knowledge currently lives under:
+Canonical knowledge lives under:
 
 ```text
 data/
 └── terms/
     ├── index.json
-    ├── opt-in.json
-    ├── opt-out.json
-    └── ogp.json
+    └── <id>.json
 ```
 
 `data/terms/index.json` is the registry of knowledge IDs.
 Each `<id>.json` file is the canonical data for that entry.
 
-HTML is a presentation layer.
+Generated HTML under `knowledge/` is a presentation layer and is not canonical knowledge.
 
-### Current implementation status
+## Static-site generation
 
-There is currently **no automatic static-site generator** that turns new JSON entries into category/detail HTML.
-
-This means:
-
-- a new `data/terms/<id>.json` file can exist without a corresponding `/knowledge/<category>/<id>/` page;
-- adding an ID to `data/terms/index.json` does not by itself guarantee that the category list page changes;
-- category pages and detail pages currently require explicit HTML updates.
-
-Long term, the intended architecture is to generate list/detail pages from JSON so the source of truth remains singular.
+Knowledge-page generation is implemented by:
 
 ```text
-JSON source of truth
-→ generated category pages
-→ generated detail pages
-→ generated OGP metadata/images
+scripts/build.mjs
 ```
 
-Until that generator exists, the data layer and presentation layer can temporarily drift and must be checked separately.
+The generator:
+
+1. reads `data/terms/index.json`;
+2. loads each registered term JSON;
+3. filters to `public === true` and `status === "accepted"`;
+4. groups entries by category;
+5. generates `knowledge/index.html`;
+6. generates each category index;
+7. generates each individual knowledge detail page.
+
+The current build pipeline is:
+
+```text
+Canonical JSON
+→ `scripts/build.mjs`
+→ generated `knowledge/` HTML
+```
+
+## GitHub Actions integration
+
+`.github/workflows/build-knowledge.yml` runs on relevant pushes to `main`, including changes under `data/terms/**` and changes to the build script.
+
+The workflow:
+
+```text
+push
+→ checkout
+→ setup Node.js
+→ run `node scripts/build.mjs`
+→ commit changed `knowledge/` files
+→ push generated output
+```
+
+The workflow avoids looping on its own generated commit by skipping when the actor is `github-actions[bot]`.
+
+## Editing rules
+
+Because the site is generated:
+
+- content edits belong in `data/terms/*.json`;
+- registry edits belong in `data/terms/index.json`;
+- page-template/rendering edits belong in `scripts/build.mjs` and shared CSS;
+- generated `knowledge/` HTML should not be manually maintained in normal operation.
+
+If generated HTML is incorrect, repair the source or generator and rebuild rather than patching the generated page as the durable fix.
 
 ## Knowledge record
 
@@ -135,18 +167,18 @@ The schema may evolve through real usage. Avoid premature over-modeling.
 
 ## Derived information
 
-Future derived outputs may include:
+Current and future derived outputs may include:
 
 ```text
 JSON knowledge
-├── category/index pages
-├── individual knowledge pages
-├── OGP metadata/images
-├── quiz candidates
-├── review queues
-├── weekly/monthly reports
-├── learning profile
-└── social post candidates
+├── category/index pages            # implemented
+├── individual knowledge pages      # implemented
+├── OGP metadata/images             # future
+├── quiz candidates                 # future
+├── review queues                   # future
+├── weekly/monthly reports          # future
+├── learning profile                # future
+└── social post candidates          # future
 ```
 
 The structured knowledge and learning history should remain the source from which these outputs are regenerated.
