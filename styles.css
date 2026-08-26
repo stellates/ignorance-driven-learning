@@ -1,0 +1,94 @@
+:root {
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #171717;
+  background: #f6f6f4;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+.container {
+  width: min(1040px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 72px 0 96px;
+}
+
+.hero {
+  padding: 48px 0 56px;
+  border-bottom: 1px solid #d7d7d2;
+  margin-bottom: 48px;
+}
+
+.eyebrow,
+.meta,
+#count {
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #6c6c68;
+}
+
+h1 {
+  margin: 12px 0 16px;
+  max-width: 900px;
+  font-size: clamp(2.4rem, 7vw, 5.6rem);
+  line-height: 1.02;
+  letter-spacing: -0.05em;
+}
+
+.lead {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #555550;
+}
+
+.section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.section-head h2 { margin: 0; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.card {
+  background: white;
+  border: 1px solid #deded8;
+  border-radius: 18px;
+  padding: 24px;
+}
+
+.card h3 {
+  margin: 8px 0 2px;
+  font-size: 1.7rem;
+}
+
+.reading {
+  margin: 0 0 18px;
+  color: #777772;
+  font-size: 0.9rem;
+}
+
+.card > p:not(.reading) {
+  line-height: 1.7;
+}
+
+.tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  color: #73736e;
+  font-size: 0.8rem;
+}
