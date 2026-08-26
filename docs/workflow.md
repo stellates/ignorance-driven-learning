@@ -26,7 +26,25 @@ When the user asks about a concept that does not yet exist:
 4. Wait until the user explicitly says to register/save/adopt it.
 5. Add a new JSON entry under `data/terms/`.
 6. Add the ID to `data/terms/index.json`.
-7. Ensure the public site can surface the entry.
+7. Update the public presentation layer explicitly if the entry should appear on the site.
+
+### Important current limitation
+
+Steps 5 and 6 do **not** automatically produce or update HTML today.
+
+Until a generator/build step is implemented, registering knowledge and surfacing it on the web are separate tasks:
+
+```text
+Register knowledge
+├─ add/update `data/terms/<id>.json`
+└─ add/update `data/terms/index.json`
+
+Surface on website
+├─ update category/list HTML
+└─ create/update individual detail HTML
+```
+
+Do not claim that a newly registered item will appear on the site merely because its JSON and index entry exist.
 
 ## 2. Repeated concept
 
@@ -61,6 +79,8 @@ Accepted public knowledge should appear under a category route such as:
 The individual page is the preferred link target for external sharing.
 
 Category pages exist for discovery and browsing.
+
+At the current stage these pages are maintained explicitly. Future work should replace this duplication with a JSON-driven generator.
 
 ## 5. OGP workflow
 
