@@ -19,30 +19,37 @@ The core idea is human-curated, ignorance-driven learning:
 
 - Canonical knowledge data: `data/terms/*.json`
 - Knowledge registry: `data/terms/index.json`
-- Presentation files such as HTML/CSS are derived views, not the canonical knowledge source.
+- Static knowledge HTML under `knowledge/` is generated output.
+- `scripts/build.mjs` is the current static-site generator for knowledge pages.
+- `.github/workflows/build-knowledge.yml` automatically rebuilds generated knowledge pages when term data or the build script changes.
 - Learning reports and profile files are derived from accumulated learning history.
 
 ## Current implementation status
 
-Do not assume that derived web pages are generated automatically.
+Knowledge-page generation is implemented.
 
-At the current stage:
-
-- adding `data/terms/<id>.json` does **not** automatically create a knowledge detail page;
-- adding an ID to `data/terms/index.json` does **not** automatically update category pages;
-- category pages and individual knowledge HTML currently need to be updated explicitly;
-- there is no implemented build pipeline yet that regenerates static HTML from the JSON source.
-
-Long term, the intended direction is:
+Current flow:
 
 ```text
-JSON knowledge
-→ generated category/list pages
-→ generated individual knowledge pages
-→ generated OGP metadata/images
+AI conversation
+→ human approval
+→ add/update `data/terms/<id>.json`
+→ add/update `data/terms/index.json`
+→ push to `main`
+→ GitHub Actions
+→ `node scripts/build.mjs`
+→ regenerate `knowledge/`
+→ commit generated HTML
 ```
 
-Until that build step exists, treat JSON registration and web-surface updates as separate tasks.
+Important rules:
+
+- Do **not** manually maintain generated category or detail HTML under `knowledge/` as the normal workflow.
+- Do **not** treat generated HTML as canonical knowledge.
+- If content is wrong, fix the JSON source and rebuild.
+- If page structure or rendering is wrong, fix `scripts/build.mjs` or shared styling and rebuild.
+- A new accepted/public term must be present in `data/terms/<id>.json` and registered in `data/terms/index.json` before the generator can surface it.
+- Generated pages may be committed by `github-actions[bot]`; do not mistake those commits for canonical content edits.
 
 ## Knowledge lifecycle
 
@@ -77,7 +84,7 @@ Current intended hierarchy:
 ```text
 /
 └── knowledge/
-    └── it/
+    └── <category>/
         └── <term>/
 ```
 
@@ -86,6 +93,7 @@ Current knowledge detail examples:
 - `/knowledge/it/opt-in/`
 - `/knowledge/it/opt-out/`
 - `/knowledge/it/ogp/`
+- `/knowledge/it/dgx-spark/`
 
 The root page is the project entry point.
 `/knowledge/` is the knowledge area.
