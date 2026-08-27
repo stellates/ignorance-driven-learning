@@ -22,8 +22,10 @@ These instructions are the operational summary. The detailed rules and research 
 - Offer these baseline choices when no project-specific design system already exists: AI-authored custom CSS, Bootstrap via CDN, Pico CSS via CDN, or Bulma via CDN.
 - When the user does not express a preference, prefer a framework-only baseline over AI-authored custom CSS. Bootstrap is the safe default for familiarity and ecosystem breadth; Bulma is a strong alternative when CSS-only readability is preferred; Pico CSS is suitable when a minimal semantic baseline is the goal.
 - Treat the chosen framework as a constraint, not as a component catalog. Do not add cards, badges, navbars, alerts, or other framework components merely because they are available.
-- Custom CSS is the last resort, not the next design step. First use semantic HTML, then the framework's standard elements, utilities, modifiers, variables, or supported customization mechanisms.
-- Add custom CSS only for a specific user-facing requirement that the selected framework cannot reasonably satisfy, and keep it narrowly scoped to that requirement.
+- Framework-only is the baseline, not the final design. This guideline covers the path from semantic structure to a clean, maintainable framework baseline; product-specific visual identity belongs to a later design stage.
+- A later design stage may apply `DESIGN.md`, brand rules, or narrowly scoped custom CSS to create intentional visual identity. Do not pull that finishing work into the baseline stage by default.
+- Custom CSS is not inherently undesirable. Premature custom CSS is the problem. First use semantic HTML, then the framework's standard elements, utilities, modifiers, variables, or supported customization mechanisms.
+- Add custom CSS during the baseline stage only for a specific user-facing requirement that the selected framework cannot reasonably satisfy, and keep it narrowly scoped to that requirement.
 - Prefer removing unnecessary UI over decorating or narrating it.
 - Preserve exceptions when they serve a real usability, product, technical, brand, accessibility, or audience requirement.
 - When these guidelines conflict with a real requirement, the requirement wins.
@@ -39,7 +41,8 @@ Before finalizing a design change, ask:
 7. Was the styling strategy agreed with the user before implementation?
 8. Is any framework component present only because the framework provides it?
 9. Before adding custom CSS, have the framework's own standard elements, utilities, modifiers, variables, or supported customization mechanisms been exhausted reasonably?
-10. What specific user-facing requirement requires custom CSS?
+10. Is this still the baseline stage, or has the work intentionally moved into a later design/identity stage?
+11. What specific user-facing requirement requires custom CSS at this stage?
 
 If an element cannot justify its presence beyond convention, polish, or explanation of the interface itself, revise or remove it before implementation.
 
@@ -222,6 +225,10 @@ However, framework choice is partly a human preference and maintenance decision.
 
 The useful constraint is therefore not "always use Bootstrap". It is "agree on the styling strategy first, then stay inside that strategy as long as reasonably possible."
 
+Framework-only is the baseline, not the final design. The purpose of this stage is to move from unstyled semantic structure to a usable, readable, maintainable foundation without prematurely defining the product's visual identity.
+
+This guideline intentionally stops at that foundation. A later design stage may apply a project-specific `DESIGN.md`, brand system, art direction, or custom CSS to create visual identity and polish. That later work is complementary to this guideline, not a violation of it.
+
 ### Preferred approach
 
 Before the initial user-facing implementation, determine the styling strategy with the user when no project-specific design system or established framework already answers the question.
@@ -240,23 +247,25 @@ After choosing a framework:
 1. start with semantic HTML;
 2. use the framework's ordinary styling and layout;
 3. use its existing utilities, modifiers, variables, or supported customization mechanisms;
-4. add custom CSS only when a specific user-facing requirement still cannot be reasonably satisfied.
+4. add custom CSS during the baseline stage only when a specific user-facing requirement still cannot be reasonably satisfied.
 
 Treat the framework as a constraint, not as a component catalog:
 
 - do not add a framework component merely because it exists;
 - prefer plain headings, links, lists, buttons, forms, and layout primitives when they are sufficient;
 - validate information structure and interaction before increasing visual complexity;
-- keep any custom CSS narrowly scoped to the requirement that justified it;
+- keep any baseline-stage custom CSS narrowly scoped to the requirement that justified it;
 - do not use the first custom-CSS exception as permission to redesign unrelated parts of the interface.
 
-Custom CSS is the last resort, not the next design step.
+Custom CSS is not the enemy and framework-only is not the aesthetic destination. The sequencing matters: establish the baseline first, then move deliberately into product-specific visual design when that stage begins.
 
 Before selecting the styling strategy, ask: "Has the user already chosen or inherited a design system or framework?"
 
 Before adding a framework component, ask: "Does this component solve a real interface problem, or am I using it because it is available?"
 
-Before adding custom CSS, ask: "What specific user-facing requirement cannot be reasonably satisfied by the selected framework and its supported customization mechanisms?"
+Before adding custom CSS during the baseline stage, ask: "What specific user-facing requirement cannot be reasonably satisfied by the selected framework and its supported customization mechanisms?"
+
+Before beginning broader visual customization, ask: "Has this work intentionally moved from baseline construction into the product-specific design stage?"
 
 If there is no concrete answer, keep the simpler baseline.
 
