@@ -102,6 +102,15 @@ Individual knowledge pages are the canonical public-facing URLs for sharing.
 
 Social sharing such as X should normally target individual knowledge pages, not category pages.
 
+## Web design
+
+Before creating or modifying any user-facing web design, read `docs/design-guidelines.md`.
+
+- Do not apply generic AI-generated landing-page patterns by default.
+- Treat `docs/design-guidelines.md` as the repository's local design rulebook.
+- The repository's design guidelines take precedence over generic stylistic defaults.
+- When adding a new visual pattern, prefer choices justified by the page's actual purpose rather than by convention or visual polish alone.
+
 ## OGP principles
 
 Individual knowledge pages are expected to become shareable endpoints.
