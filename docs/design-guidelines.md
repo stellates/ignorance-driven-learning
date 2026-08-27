@@ -18,6 +18,9 @@ These instructions are the operational summary. The detailed rules and research 
 - Keep terminology consistent. Use one canonical user-facing label for the same concept unless the meaning, scope, or action is genuinely different.
 - Do not add explanatory prose that merely restates what a component already communicates through its label, position, hierarchy, context, or interaction.
 - Prefer improving labels, structure, grouping, hierarchy, or affordance before adding explanatory text.
+- For the initial design pass, do not write custom CSS. Use Bootstrap via CDN as the default baseline for this repository unless there is a concrete reason to choose another framework.
+- Treat the framework as a constraint, not as a component catalog. Do not add cards, badges, navbars, alerts, or other framework components merely because they are available.
+- Add custom CSS only after the baseline interface works and only for a specific need that the framework cannot reasonably satisfy.
 - Prefer removing unnecessary UI over decorating or narrating it.
 - Preserve exceptions when they serve a real usability, product, technical, brand, accessibility, or audience requirement.
 - When these guidelines conflict with a real requirement, the requirement wins.
@@ -30,6 +33,8 @@ Before finalizing a design change, ask:
 4. Are the same concepts named consistently across the interface?
 5. Does any sentence merely explain what the component already makes clear?
 6. Could clarity be improved by changing the component itself instead of adding more text?
+7. Did the initial implementation introduce custom CSS before the framework-only baseline proved insufficient?
+8. Is any framework component present only because the framework provides it?
 
 If an element cannot justify its presence beyond convention, polish, or explanation of the interface itself, revise or remove it before implementation.
 
@@ -189,6 +194,47 @@ When designing or reviewing a component:
 Before adding explanatory copy, ask: "What information does this sentence provide that the component does not already communicate?"
 
 If the answer is only a restatement of the component itself, remove it.
+
+## Rule 5: Start with a framework-only baseline
+
+### Pattern
+
+AI-generated interfaces often begin by inventing a custom visual system before the page's structure and interaction have earned one.
+
+The first implementation may immediately introduce custom CSS for typography, spacing, colors, borders, shadows, rounded corners, hover motion, responsive behavior, and one-off component styling. This gives the model a large design surface on which familiar generated patterns can accumulate before the underlying interface has been validated.
+
+The opposite failure can happen after adopting a framework: the interface becomes a showcase of framework components simply because cards, badges, navbars, alerts, pills, accordions, and other components are readily available.
+
+The problem is not custom CSS itself, and it is not the use of a framework. The problem is allowing either custom styling or a component library to make design decisions before there is a demonstrated need.
+
+### Why it feels AI-generated
+
+Custom CSS gives a model many opportunities to reproduce statistically familiar design conventions that were never requested: large hero typography, generous empty space, rounded white cards, subtle borders, small hover lifts, muted labels, and decorative hierarchy.
+
+A framework-only baseline reduces that freedom. It forces the first pass to concentrate on document structure, content, navigation, form behavior, and interaction using an existing vocabulary instead of inventing a visual identity by default.
+
+However, a framework can become another source of convention-driven design if its component catalog is treated as a checklist. Replacing "AI likes cards" with "Bootstrap has cards" does not solve the underlying problem.
+
+The framework is useful as a constraint, not as an aesthetic goal.
+
+### Preferred approach
+
+For the initial design pass in this repository:
+
+- do not write custom CSS;
+- use Bootstrap via CDN as the default baseline unless a concrete project requirement justifies another established framework;
+- use semantic HTML and the minimum framework utilities or components needed to make the interface usable;
+- do not add a Bootstrap component merely because Bootstrap provides it;
+- prefer plain headings, links, lists, buttons, forms, and layout utilities when they are sufficient;
+- validate the information structure and interaction before introducing a custom visual layer;
+- add custom CSS only after identifying a specific requirement that the framework cannot reasonably satisfy;
+- when custom CSS is introduced, keep it narrowly scoped to that requirement rather than using the exception to redesign unrelated parts of the interface.
+
+Before adding custom CSS, ask: "What specific user-facing requirement cannot be reasonably satisfied by the framework-only baseline?"
+
+Before adding a framework component, ask: "Does this component solve a real interface problem, or am I using it because it is available?"
+
+If neither choice has a concrete answer, keep the simpler baseline.
 
 ## Status
 
