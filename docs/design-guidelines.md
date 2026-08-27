@@ -50,44 +50,70 @@ For documentation, knowledge, utility, and project-index pages:
 
 A hero section is acceptable when the page genuinely needs campaign-like communication, strong visual storytelling, or a single-message first impression. It should be a deliberate exception, not an automatic starting point.
 
-## Rule 2: Avoid decorative English and terminology drift
+## Rule 2: Avoid decorative use of a secondary language
 
 ### Pattern
 
-AI-generated interfaces often insert short English labels into an otherwise non-English page simply because they look like familiar UI vocabulary.
+AI-generated interfaces often insert short words or labels from a secondary language into an otherwise single-language interface even when the language switch adds no meaning.
 
-Examples include section labels such as `Explore`, `Knowledge`, `Features`, or `About`, even when the audience primarily reads Japanese and there is no product, technical, or naming reason to use English.
+On a Japanese-facing page, this may appear as English section labels such as `Explore`, `Knowledge`, `Features`, `Overview`, or `Discover`. These examples are not prohibited words. The pattern is the use of a secondary language primarily because it looks concise, modern, familiar, or visually "designed".
 
-The same page may also refer to one concept using multiple forms, such as:
-
-- `Knowledge`;
-- `ナレッジ`;
-- `知識`.
-
-Repository names, internal project names, and English technical terms may also be surfaced prominently even when they are not useful to the end user.
+The same pattern can occur in any language pair. What matters is whether the language switch serves the user or merely serves the composition.
 
 ### Why it feels AI-generated
 
-The English is often serving visual style rather than communication.
+Short English labels are heavily represented in templates, design-system examples, landing pages, and generated UI samples. They are therefore easy defaults for a model to reproduce without checking whether the target audience actually benefits from them.
 
-Short English labels are common in templates and design examples, so they are easy defaults to reproduce. When inserted without considering the audience, they make the interface feel assembled from generic UI fragments rather than written for a specific user.
+The result can feel like an interface assembled from familiar design fragments rather than one written for its actual users. The secondary language becomes visual decoration instead of communication.
 
-Terminology drift makes the problem worse. Mixing English, katakana, and Japanese labels for the same concept suggests that each section was generated independently rather than designed as one coherent interface.
-
-This is not an argument for eliminating English. Terms such as `AI`, official product names, standard technical vocabulary, or intentionally retained brand names may be the clearest choice. The problem is using English automatically when the user's language would communicate the same thing more naturally.
+This rule is not anti-English and does not require translating everything into the audience's primary language. A secondary-language term may be the clearest choice when it is an official product name, acronym, brand, code-related term, established technical vocabulary, quotation, or domain-standard wording.
 
 ### Preferred approach
 
-For user-facing text:
+For user-facing interface text:
 
-- prefer the primary language of the target audience unless there is a concrete reason not to;
-- do not use English only because it looks concise, modern, or visually familiar;
-- do not surface repository names or internal identifiers prominently unless they help the user understand or navigate the product;
-- choose one user-facing term for each concept and use it consistently across the page;
-- treat English, katakana, and translated Japanese forms as separate wording choices that require deliberate selection, not interchangeable decoration;
-- preserve English where it is the established or clearest form, including product names, acronyms, code-related terms, and technical vocabulary when translation would reduce clarity.
+- prefer the target audience's primary language by default;
+- require a semantic, product, technical, brand, or audience reason before switching languages;
+- do not introduce a secondary language solely because the label looks shorter, more modern, more familiar, or more visually polished;
+- evaluate each language switch in context rather than maintaining a blacklist of particular words;
+- preserve established names and terminology when translation would reduce clarity or accuracy.
 
-Language choice should follow the audience and the meaning of the content, not a generic interface aesthetic.
+The useful question is not "Is this English word allowed?" but "Why is this label in a different language from the surrounding interface?"
+
+## Rule 3: Keep terminology consistent within the interface
+
+### Pattern
+
+AI-generated interfaces may refer to the same user-facing concept with different terms in different parts of the page or site.
+
+Examples include:
+
+- `Knowledge`, `ナレッジ`, and `知識` for the same destination or concept;
+- `Home` and `トップ` for the same navigation target;
+- `Settings` and `設定` for the same feature;
+- different labels for the same action, content type, or navigation level without a meaningful distinction.
+
+The inconsistency may cross languages, but language mixing is not required. The same problem can occur entirely within Japanese or entirely within English.
+
+### Why it feels AI-generated
+
+Generated sections can be locally plausible while remaining globally inconsistent. A label may sound reasonable in isolation, yet differ from wording used elsewhere for the same concept.
+
+This makes the interface feel like a collection of independently generated fragments rather than a single system with deliberate vocabulary. It can also create real usability problems by making users wonder whether two different labels refer to different things.
+
+Terminology consistency is therefore a content-design issue as much as a visual-design issue.
+
+### Preferred approach
+
+For each user-facing concept:
+
+- choose a canonical label and reuse it consistently across navigation, headings, buttons, cards, and explanatory text when they refer to the same thing;
+- do not alternate between English, katakana, translated Japanese, abbreviations, or synonyms merely for variety;
+- use a different term only when the underlying meaning, scope, or action is actually different;
+- preserve official names and quoted terminology where exact wording matters;
+- when revising a label, check nearby and related UI for older variants rather than changing only the local instance.
+
+Consistency should not flatten meaningful distinctions. The goal is to avoid accidental naming drift, not to force genuinely different concepts into one label.
 
 ## Status
 
