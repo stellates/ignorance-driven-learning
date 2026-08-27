@@ -111,6 +111,14 @@ Before creating or modifying any user-facing web design, read `docs/design-guide
 - The repository's design guidelines take precedence over generic stylistic defaults.
 - When adding a new visual pattern, prefer choices justified by the page's actual purpose rather than by convention or visual polish alone.
 
+## Markdown change reporting
+
+When you create, edit, rename, or delete a Markdown (`.md`) file, always include a Japanese summary in the final response explaining what changed and why.
+
+- Keep the Markdown files themselves in their existing language unless the user explicitly asks to change that language.
+- The Japanese summary is required even when the Markdown change is small.
+- Summarize the actual changes rather than merely saying that the file was updated.
+
 ## OGP principles
 
 Individual knowledge pages are expected to become shareable endpoints.
