@@ -6,6 +6,37 @@ It is a research note and a local design rulebook for this repository. The rules
 
 The goal is not to reject modern web design. The goal is to notice recurring AI defaults, explain why they feel generic, and replace them with choices that fit the actual purpose of the page.
 
+## AI instructions
+
+Read this section before making any user-facing design change.
+
+These instructions are the operational summary. The detailed rules and research history below explain how these constraints were derived and may be consulted when more context is needed.
+
+- Do not add interface elements by convention alone. Every visible element must have a clear user-facing job.
+- Avoid oversized hero sections unless the page has a specific reason to prioritize a campaign-like first impression.
+- Do not switch languages for visual style alone. Prefer the target audience's primary language unless a semantic, product, technical, brand, or audience reason justifies another language.
+- Keep terminology consistent. Use one canonical user-facing label for the same concept unless the meaning, scope, or action is genuinely different.
+- Do not add explanatory prose that merely restates what a component already communicates through its label, position, hierarchy, context, or interaction.
+- Prefer improving labels, structure, grouping, hierarchy, or affordance before adding explanatory text.
+- Prefer removing unnecessary UI over decorating or narrating it.
+- Preserve exceptions when they serve a real usability, product, technical, brand, accessibility, or audience requirement.
+- When these guidelines conflict with a real requirement, the requirement wins.
+
+Before finalizing a design change, ask:
+
+1. What job does each visible element perform for the user?
+2. Is any layout pattern present only because it is a familiar default?
+3. Is any language switch decorative rather than communicative?
+4. Are the same concepts named consistently across the interface?
+5. Does any sentence merely explain what the component already makes clear?
+6. Could clarity be improved by changing the component itself instead of adding more text?
+
+If an element cannot justify its presence beyond convention, polish, or explanation of the interface itself, revise or remove it before implementation.
+
+---
+
+## Research notes and rule history
+
 ## How to use this document
 
 - Treat each rule as an observation-backed constraint.
