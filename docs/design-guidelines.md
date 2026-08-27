@@ -18,9 +18,12 @@ These instructions are the operational summary. The detailed rules and research 
 - Keep terminology consistent. Use one canonical user-facing label for the same concept unless the meaning, scope, or action is genuinely different.
 - Do not add explanatory prose that merely restates what a component already communicates through its label, position, hierarchy, context, or interaction.
 - Prefer improving labels, structure, grouping, hierarchy, or affordance before adding explanatory text.
-- For the initial design pass, do not write custom CSS. Use Bootstrap via CDN as the default baseline for this repository unless there is a concrete reason to choose another framework.
-- Treat the framework as a constraint, not as a component catalog. Do not add cards, badges, navbars, alerts, or other framework components merely because they are available.
-- Add custom CSS only after the baseline interface works and only for a specific need that the framework cannot reasonably satisfy.
+- Before the initial implementation, agree with the user on the styling strategy instead of choosing one silently.
+- Offer these baseline choices when no project-specific design system already exists: AI-authored custom CSS, Bootstrap via CDN, Pico CSS via CDN, or Bulma via CDN.
+- When the user does not express a preference, prefer a framework-only baseline over AI-authored custom CSS. Bootstrap is the safe default for familiarity and ecosystem breadth; Bulma is a strong alternative when CSS-only readability is preferred; Pico CSS is suitable when a minimal semantic baseline is the goal.
+- Treat the chosen framework as a constraint, not as a component catalog. Do not add cards, badges, navbars, alerts, or other framework components merely because they are available.
+- Custom CSS is the last resort, not the next design step. First use semantic HTML, then the framework's standard elements, utilities, modifiers, variables, or supported customization mechanisms.
+- Add custom CSS only for a specific user-facing requirement that the selected framework cannot reasonably satisfy, and keep it narrowly scoped to that requirement.
 - Prefer removing unnecessary UI over decorating or narrating it.
 - Preserve exceptions when they serve a real usability, product, technical, brand, accessibility, or audience requirement.
 - When these guidelines conflict with a real requirement, the requirement wins.
@@ -33,8 +36,10 @@ Before finalizing a design change, ask:
 4. Are the same concepts named consistently across the interface?
 5. Does any sentence merely explain what the component already makes clear?
 6. Could clarity be improved by changing the component itself instead of adding more text?
-7. Did the initial implementation introduce custom CSS before the framework-only baseline proved insufficient?
+7. Was the styling strategy agreed with the user before implementation?
 8. Is any framework component present only because the framework provides it?
+9. Before adding custom CSS, have the framework's own standard elements, utilities, modifiers, variables, or supported customization mechanisms been exhausted reasonably?
+10. What specific user-facing requirement requires custom CSS?
 
 If an element cannot justify its presence beyond convention, polish, or explanation of the interface itself, revise or remove it before implementation.
 
@@ -195,46 +200,65 @@ Before adding explanatory copy, ask: "What information does this sentence provid
 
 If the answer is only a restatement of the component itself, remove it.
 
-## Rule 5: Start with a framework-only baseline
+## Rule 5: Agree on the styling strategy before implementation
 
 ### Pattern
 
-AI-generated interfaces often begin by inventing a custom visual system before the page's structure and interaction have earned one.
+AI-generated interfaces often begin by choosing a styling approach silently and immediately. The model may invent custom CSS before the page's structure and interaction have earned one, or it may choose a familiar framework and then treat that framework's component catalog as a design plan.
 
-The first implementation may immediately introduce custom CSS for typography, spacing, colors, borders, shadows, rounded corners, hover motion, responsive behavior, and one-off component styling. This gives the model a large design surface on which familiar generated patterns can accumulate before the underlying interface has been validated.
+The first implementation may therefore introduce custom typography, spacing, colors, borders, shadows, rounded corners, hover motion, responsive behavior, and one-off component styling before there is evidence that any of those choices are needed.
 
-The opposite failure can happen after adopting a framework: the interface becomes a showcase of framework components simply because cards, badges, navbars, alerts, pills, accordions, and other components are readily available.
+The opposite failure can happen after adopting a framework: the interface becomes a showcase of cards, badges, navbars, alerts, pills, accordions, and other components simply because they are readily available.
 
-The problem is not custom CSS itself, and it is not the use of a framework. The problem is allowing either custom styling or a component library to make design decisions before there is a demonstrated need.
+The problem is not custom CSS, Bootstrap, Pico CSS, Bulma, or any particular tool. The problem is allowing the styling tool to make product and interface decisions before the user has chosen the intended level of visual freedom and before there is a demonstrated need.
 
 ### Why it feels AI-generated
 
-Custom CSS gives a model many opportunities to reproduce statistically familiar design conventions that were never requested: large hero typography, generous empty space, rounded white cards, subtle borders, small hover lifts, muted labels, and decorative hierarchy.
+Custom CSS gives a model a large design surface on which statistically familiar conventions can accumulate without being requested: oversized typography, generous empty space, rounded white cards, subtle borders, muted labels, small hover lifts, and decorative hierarchy.
 
-A framework-only baseline reduces that freedom. It forces the first pass to concentrate on document structure, content, navigation, form behavior, and interaction using an existing vocabulary instead of inventing a visual identity by default.
+A framework-only baseline reduces that freedom and makes the first pass easier to inspect and maintain. It keeps more of the design visible in semantic HTML and framework classes rather than dispersing decisions into a growing custom stylesheet.
 
-However, a framework can become another source of convention-driven design if its component catalog is treated as a checklist. Replacing "AI likes cards" with "Bootstrap has cards" does not solve the underlying problem.
+However, framework choice is partly a human preference and maintenance decision. Bootstrap, Pico CSS, and Bulma can all produce a sufficiently simple baseline. Choosing one silently merely replaces one AI default with another.
 
-The framework is useful as a constraint, not as an aesthetic goal.
+The useful constraint is therefore not "always use Bootstrap". It is "agree on the styling strategy first, then stay inside that strategy as long as reasonably possible."
 
 ### Preferred approach
 
-For the initial design pass in this repository:
+Before the initial user-facing implementation, determine the styling strategy with the user when no project-specific design system or established framework already answers the question.
 
-- do not write custom CSS;
-- use Bootstrap via CDN as the default baseline unless a concrete project requirement justifies another established framework;
-- use semantic HTML and the minimum framework utilities or components needed to make the interface usable;
-- do not add a Bootstrap component merely because Bootstrap provides it;
-- prefer plain headings, links, lists, buttons, forms, and layout utilities when they are sufficient;
-- validate the information structure and interaction before introducing a custom visual layer;
-- add custom CSS only after identifying a specific requirement that the framework cannot reasonably satisfy;
-- when custom CSS is introduced, keep it narrowly scoped to that requirement rather than using the exception to redesign unrelated parts of the interface.
+Offer these choices:
 
-Before adding custom CSS, ask: "What specific user-facing requirement cannot be reasonably satisfied by the framework-only baseline?"
+- **AI-authored custom CSS** — use when the user explicitly wants the AI to shape the visual design freely, when an existing visual specification requires it, or when CDN/framework use is not suitable;
+- **Bootstrap via CDN** — use as the safe framework default when familiarity, ecosystem breadth, common maintenance knowledge, and a large standard vocabulary are useful;
+- **Pico CSS via CDN** — use when the goal is a minimal, semantic, low-ceremony baseline with very little framework markup;
+- **Bulma via CDN** — use when a CSS-only framework and readable class-based styling are preferred.
+
+If the user has no preference, prefer a framework-only baseline over custom CSS. Bootstrap is the safe default; Bulma is a strong alternative when CSS-only readability is preferred; Pico CSS is appropriate when minimal semantic styling is the priority.
+
+After choosing a framework:
+
+1. start with semantic HTML;
+2. use the framework's ordinary styling and layout;
+3. use its existing utilities, modifiers, variables, or supported customization mechanisms;
+4. add custom CSS only when a specific user-facing requirement still cannot be reasonably satisfied.
+
+Treat the framework as a constraint, not as a component catalog:
+
+- do not add a framework component merely because it exists;
+- prefer plain headings, links, lists, buttons, forms, and layout primitives when they are sufficient;
+- validate information structure and interaction before increasing visual complexity;
+- keep any custom CSS narrowly scoped to the requirement that justified it;
+- do not use the first custom-CSS exception as permission to redesign unrelated parts of the interface.
+
+Custom CSS is the last resort, not the next design step.
+
+Before selecting the styling strategy, ask: "Has the user already chosen or inherited a design system or framework?"
 
 Before adding a framework component, ask: "Does this component solve a real interface problem, or am I using it because it is available?"
 
-If neither choice has a concrete answer, keep the simpler baseline.
+Before adding custom CSS, ask: "What specific user-facing requirement cannot be reasonably satisfied by the selected framework and its supported customization mechanisms?"
+
+If there is no concrete answer, keep the simpler baseline.
 
 ## Status
 
