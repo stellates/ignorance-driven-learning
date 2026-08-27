@@ -115,6 +115,50 @@ For each user-facing concept:
 
 Consistency should not flatten meaningful distinctions. The goal is to avoid accidental naming drift, not to force genuinely different concepts into one label.
 
+## Rule 4: Do not turn components into explanatory prose
+
+### Pattern
+
+AI-generated interfaces often treat components as containers for explanations rather than as interface elements with a clear job.
+
+A simple card, list item, navigation block, button group, or section may accumulate several layers of text at once:
+
+- a category or meta label;
+- a heading;
+- a sentence that restates the heading;
+- a second sentence explaining what the user can already infer from the label or interaction;
+- an additional note, hint, or CTA.
+
+For example, a navigation card labeled "View knowledge" may also include a sentence such as "Browse the things you did not know by category" even when the destination and context already make that function obvious.
+
+The individual sentences may be reasonable in isolation. The pattern is the repeated addition of prose to components that do not need prose to perform their role.
+
+### Why it feels AI-generated
+
+Language models are optimized to explain. When generating UI, that strength can become a default behavior: uncertainty about whether a component is self-explanatory is resolved by adding another sentence.
+
+This produces interfaces that read like annotated mockups. Instead of communicating through hierarchy, labels, grouping, affordances, and interaction, the design explains itself in text.
+
+The result is often verbose without being more useful. It increases visual density, weakens scanning, makes every component feel equally important, and can hide weak information architecture behind explanatory copy.
+
+A component is not a comment. User-facing UI should not contain implementation-style narration merely to reassure the designer that the component's purpose is understandable.
+
+### Preferred approach
+
+When designing or reviewing a component:
+
+- first ask whether its role is clear from its label, position, visual hierarchy, surrounding context, and interaction;
+- if the heading or action label already communicates the purpose, do not add a sentence that merely paraphrases it;
+- treat explanatory text as optional content that must justify its presence, not as a default subcomponent;
+- prefer changing the label, grouping, structure, or affordance when a component is unclear instead of immediately adding instructions;
+- keep supporting text when it adds information the user could not otherwise know, such as consequences, constraints, prerequisites, unusual behavior, or meaningful context;
+- remove persistent hints and commentary that only describe what the interface visibly does;
+- review cards and repeated components especially aggressively, because one unnecessary sentence becomes many unnecessary sentences when the pattern repeats.
+
+Before adding explanatory copy, ask: "What information does this sentence provide that the component does not already communicate?"
+
+If the answer is only a restatement of the component itself, remove it.
+
 ## Status
 
 This is an evolving set of guidelines based on observations from actual work on this repository.
