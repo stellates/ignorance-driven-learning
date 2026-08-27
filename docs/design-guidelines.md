@@ -50,8 +50,47 @@ For documentation, knowledge, utility, and project-index pages:
 
 A hero section is acceptable when the page genuinely needs campaign-like communication, strong visual storytelling, or a single-message first impression. It should be a deliberate exception, not an automatic starting point.
 
+## Rule 2: Avoid decorative English and terminology drift
+
+### Pattern
+
+AI-generated interfaces often insert short English labels into an otherwise non-English page simply because they look like familiar UI vocabulary.
+
+Examples include section labels such as `Explore`, `Knowledge`, `Features`, or `About`, even when the audience primarily reads Japanese and there is no product, technical, or naming reason to use English.
+
+The same page may also refer to one concept using multiple forms, such as:
+
+- `Knowledge`;
+- `ナレッジ`;
+- `知識`.
+
+Repository names, internal project names, and English technical terms may also be surfaced prominently even when they are not useful to the end user.
+
+### Why it feels AI-generated
+
+The English is often serving visual style rather than communication.
+
+Short English labels are common in templates and design examples, so they are easy defaults to reproduce. When inserted without considering the audience, they make the interface feel assembled from generic UI fragments rather than written for a specific user.
+
+Terminology drift makes the problem worse. Mixing English, katakana, and Japanese labels for the same concept suggests that each section was generated independently rather than designed as one coherent interface.
+
+This is not an argument for eliminating English. Terms such as `AI`, official product names, standard technical vocabulary, or intentionally retained brand names may be the clearest choice. The problem is using English automatically when the user's language would communicate the same thing more naturally.
+
+### Preferred approach
+
+For user-facing text:
+
+- prefer the primary language of the target audience unless there is a concrete reason not to;
+- do not use English only because it looks concise, modern, or visually familiar;
+- do not surface repository names or internal identifiers prominently unless they help the user understand or navigate the product;
+- choose one user-facing term for each concept and use it consistently across the page;
+- treat English, katakana, and translated Japanese forms as separate wording choices that require deliberate selection, not interchangeable decoration;
+- preserve English where it is the established or clearest form, including product names, acronyms, code-related terms, and technical vocabulary when translation would reduce clarity.
+
+Language choice should follow the audience and the meaning of the content, not a generic interface aesthetic.
+
 ## Status
 
-This is the first observation in an evolving set of guidelines.
+This is an evolving set of guidelines based on observations from actual work on this repository.
 
-Future rules should be added only as recurring AI-design patterns are identified in actual work on this repository.
+Future rules should be added only as recurring AI-design patterns are identified in practice.
