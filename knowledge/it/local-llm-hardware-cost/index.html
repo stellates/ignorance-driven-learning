@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ローカルLLM用ハードウェアの価格感 | IT Knowledge</title>
+  <meta name="description" content="ローカルLLMは、まず体験するだけなら普段使いPC兼用の20〜40万円級でも始められるが、最新の100B〜200B級モデルを余裕を持って実用運用するなら、2026年8月時点では少なくとも300万円程度を予算線として見る方が安全。">
+  <link rel="stylesheet" href="../../../styles.css">
+</head>
+<body>
+  <main class="container detail-page">
+    <nav class="breadcrumb"><a href="../../../">Home</a><span>/</span><a href="../../">Knowledge</a><span>/</span><a href="../">IT</a><span>/</span><span>ローカルLLM用ハードウェアの価格感</span></nav>
+    <article class="detail-card">
+      <p class="eyebrow">IT / AI / Hardware</p>
+      <h1>ローカルLLM用ハードウェアの価格感</h1>
+      <p class="reading">ローカルエルエルエムよう ハードウェアのかかくかん</p>
+      <p class="detail-summary">ローカルLLMは、まず体験するだけなら普段使いPC兼用の20〜40万円級でも始められるが、最新の100B〜200B級モデルを余裕を持って実用運用するなら、2026年8月時点では少なくとも300万円程度を予算線として見る方が安全。</p>
+      <section><h2>どういう意味？</h2><p>ローカルLLM用マシンの価格は、『モデルが一応ロードできるか』と『実用的に運用できるか』を分けて考える必要がある。4B〜12B級などの比較的小さなモデルを試し、普段使いのPCも兼ねる体験用途なら、MacBook Airの24GB級など20〜40万円程度のマシンでも十分にローカルLLMを体験できる。一方、Qwen3.8-Flash-Nextのような100B〜200B級の大型モデルでは、量子化しても100GB前後以上のメモリを必要とする場合があり、128GB級のDGX SparkやGB10機1台では『動かせる』としても余裕が少ないことがある。さらに実運用では、LLM本体だけでなくKV cache、長いコンテキスト、Embedding、RAG、ブラウザ、IDE、DB、エージェントが起動する別アプリ、複数モデル、複数ユーザーの同時利用などにもメモリや計算資源が必要になる。そのため、最小構成を探せば100〜200万円級から成立する場合はあるものの、用途を固定せず『ガチのローカルAI基盤』として組むなら、少なくとも300万円程度を見積もっておく方が現実的。重要なのは、SNSなどで見る『このモデルが動いた』という報告を、そのまま日常運用に必要なハードウェア要件だと考えないこと。</p></section>
+      <section><h2>例</h2><p>2026年8月時点のざっくりした目安では、ローカルLLM体験・普段使いPC兼用なら20〜40万円級、巨大モデル専用機の入口は100〜200万円級、エージェントや周辺処理、将来の大型モデル、複数人利用まで考えたローカルAI基盤なら300万円以上を予算線として考える。</p></section>
+      <section><h2>また聞いた回数</h2><p>1回</p></section>
+      <div class="tags"><span>#local-llm</span><span>#ai-hardware</span><span>#hardware-cost</span><span>#unified-memory</span><span>#vram</span><span>#dgx-spark</span><span>#gb10</span><span>#mac</span><span>#agent</span><span>#moe</span></div>
+    </article>
+  </main>
+</body>
+</html>
