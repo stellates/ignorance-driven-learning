@@ -2,5 +2,6 @@
   "opt-in",
   "opt-out",
   "ogp",
-  "dgx-spark"
+  "dgx-spark",
+  "local-llm-hardware-cost"
 ]
