@@ -9,137 +9,92 @@
 </head>
 <body>
   <header>
-    <nav class="navbar is-white has-shadow" aria-label="主要ナビゲーション">
+    <nav class="navbar" aria-label="主要ナビゲーション">
       <div class="container">
         <div class="navbar-brand">
           <a class="navbar-item has-text-weight-bold" href="./">Ignorance Driven Learning</a>
         </div>
-
         <div class="navbar-menu is-active">
           <div class="navbar-end">
-            <div class="navbar-item">
-              <div class="field">
-                <div class="control">
-                  <input class="input is-rounded" type="search" placeholder="ナレッジを検索" aria-label="ナレッジを検索" disabled>
-                </div>
-              </div>
-            </div>
+            <a class="navbar-item" href="./knowledge/">ナレッジ</a>
+            <span class="navbar-item has-text-grey-light">クイズ</span>
+            <span class="navbar-item has-text-grey-light">レポート</span>
           </div>
         </div>
       </div>
     </nav>
-
-    <div class="has-background-white-bis">
-      <div class="container">
-        <div class="tabs mb-0">
-          <ul>
-            <li class="is-active"><a href="./knowledge/">ナレッジ</a></li>
-            <li><a aria-disabled="true">クイズ</a></li>
-            <li><a aria-disabled="true">レポート</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
   </header>
 
   <main class="section">
     <div class="container">
-      <div class="columns is-variable is-6">
-        <div class="column is-8">
-          <section class="mb-6" aria-labelledby="latest-heading">
-            <div class="level mb-4">
+      <div class="columns is-variable is-8">
+        <div class="column is-9">
+          <section aria-labelledby="latest-heading">
+            <div class="level mb-5">
               <div class="level-left">
-                <h1 id="latest-heading" class="title is-4 mb-0">新しいナレッジ</h1>
+                <h1 id="latest-heading" class="title is-3 mb-0">新しいナレッジ</h1>
               </div>
               <div class="level-right">
-                <a href="./knowledge/">すべて見る →</a>
+                <a href="./knowledge/">一覧</a>
               </div>
             </div>
 
-            <article class="box">
-              <p class="is-size-7 has-text-grey mb-2">IT / AI / Hardware</p>
-              <h2 class="title is-5 mb-2">
-                <a href="./knowledge/it/local-llm-hardware-cost/">ローカルLLM用ハードウェアの価格感</a>
-              </h2>
-              <p class="mb-3">ローカルLLMは、体験用途と大型モデルを実用運用する場合で必要なハードウェアと予算が大きく異なる。</p>
-              <div class="tags">
-                <span class="tag">local-llm</span>
-                <span class="tag">ai-hardware</span>
-                <span class="tag">hardware-cost</span>
+            <article class="media py-5">
+              <div class="media-content">
+                <p class="is-size-7 has-text-grey mb-2">2026.08.27　IT / AI / Hardware</p>
+                <h2 class="title is-4 mb-3"><a href="./knowledge/it/local-llm-hardware-cost/">ローカルLLM用ハードウェアの価格感</a></h2>
+                <p>ローカルLLMは、体験用途と大型モデルを実用運用する場合で必要なハードウェアと予算が大きく異なる。</p>
               </div>
             </article>
 
-            <article class="box">
-              <p class="is-size-7 has-text-grey mb-2">IT / AI / Hardware</p>
-              <h2 class="title is-5 mb-2">
-                <a href="./knowledge/it/dgx-spark/">DGX Spark</a>
-              </h2>
-              <p class="mb-3">NVIDIAが提供する、机上に置ける小型のAI開発向けコンピュータ。</p>
-              <div class="tags">
-                <span class="tag">nvidia</span>
-                <span class="tag">local-llm</span>
-                <span class="tag">cuda</span>
+            <hr>
+
+            <article class="media py-5">
+              <div class="media-content">
+                <p class="is-size-7 has-text-grey mb-2">2026.08.26　IT / AI / Hardware</p>
+                <h2 class="title is-4 mb-3"><a href="./knowledge/it/dgx-spark/">DGX Spark</a></h2>
+                <p>NVIDIAが提供する、机上に置ける小型のAI開発向けコンピュータ。</p>
               </div>
             </article>
 
-            <article class="box">
-              <p class="is-size-7 has-text-grey mb-2">IT / Web / SNS</p>
-              <h2 class="title is-5 mb-2">
-                <a href="./knowledge/it/ogp/">OGP</a>
-              </h2>
-              <p class="mb-3">WebページをSNSなどで共有したときに、タイトル・説明・画像などをカード表示するためのメタ情報。</p>
-              <div class="tags">
-                <span class="tag">ogp</span>
-                <span class="tag">sns</span>
-                <span class="tag">web</span>
+            <hr>
+
+            <article class="media py-5">
+              <div class="media-content">
+                <p class="is-size-7 has-text-grey mb-2">2026.08.26　IT / Web / SNS</p>
+                <h2 class="title is-4 mb-3"><a href="./knowledge/it/ogp/">OGP</a></h2>
+                <p>WebページをSNSなどで共有したときに、タイトル・説明・画像などをカード表示するためのメタ情報。</p>
               </div>
             </article>
-          </section>
 
-          <section aria-labelledby="web-heading">
-            <div class="level mb-4">
-              <div class="level-left">
-                <h2 id="web-heading" class="title is-4 mb-0">Web</h2>
-              </div>
-            </div>
+            <hr>
 
-            <div class="columns">
-              <div class="column">
-                <article class="box">
-                  <p class="is-size-7 has-text-grey mb-2">IT / Web / Privacy</p>
-                  <h3 class="title is-5 mb-2"><a href="./knowledge/it/opt-in/">opt-in</a></h3>
-                  <p>本人が事前に同意してから、配信や利用などを開始する方式。</p>
-                </article>
+            <div class="columns py-5">
+              <div class="column is-6">
+                <p class="is-size-7 has-text-grey mb-2">IT / Web / Privacy</p>
+                <h2 class="title is-5 mb-2"><a href="./knowledge/it/opt-in/">opt-in</a></h2>
+                <p>本人が事前に同意してから、配信や利用などを開始する方式。</p>
               </div>
-              <div class="column">
-                <article class="box">
-                  <p class="is-size-7 has-text-grey mb-2">IT / Web / Privacy</p>
-                  <h3 class="title is-5 mb-2"><a href="./knowledge/it/opt-out/">opt-out</a></h3>
-                  <p>最初は有効で、利用者が後から停止・拒否を選ぶ方式。</p>
-                </article>
+              <div class="column is-6">
+                <p class="is-size-7 has-text-grey mb-2">IT / Web / Privacy</p>
+                <h2 class="title is-5 mb-2"><a href="./knowledge/it/opt-out/">opt-out</a></h2>
+                <p>最初は有効で、利用者が後から停止・拒否を選ぶ方式。</p>
               </div>
             </div>
           </section>
         </div>
 
-        <aside class="column is-4">
-          <section class="mb-6" aria-labelledby="topics-heading">
-            <h2 id="topics-heading" class="title is-5">トピック</h2>
-            <div class="tags are-medium">
-              <span class="tag is-light">AI</span>
-              <span class="tag is-light">Hardware</span>
-              <span class="tag is-light">Web</span>
-              <span class="tag is-light">Privacy</span>
-              <span class="tag is-light">SNS</span>
-            </div>
+        <aside class="column is-3">
+          <section class="content mb-6" aria-labelledby="topics-heading">
+            <h2 id="topics-heading" class="is-size-6 has-text-weight-bold">トピック</h2>
+            <p><a href="./knowledge/">AI / Hardware</a></p>
+            <p><a href="./knowledge/">Web / Privacy</a></p>
+            <p><a href="./knowledge/">SNS</a></p>
           </section>
 
-          <section aria-labelledby="about-heading">
-            <h2 id="about-heading" class="title is-5">このサイトについて</h2>
-            <div class="content">
-              <p>AIとの会話で理解できたことを、人が確認して記録しています。</p>
-              <p><a href="./knowledge/">ナレッジを見る →</a></p>
-            </div>
+          <section class="content" aria-labelledby="about-heading">
+            <h2 id="about-heading" class="is-size-6 has-text-weight-bold">このサイトについて</h2>
+            <p class="is-size-7 has-text-grey">AIとの会話で理解できたことを、人が確認して記録しています。</p>
           </section>
         </aside>
       </div>
