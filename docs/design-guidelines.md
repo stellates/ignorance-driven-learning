@@ -1,57 +1,57 @@
 # Anti-AI Design Guidelines
 
-このドキュメントは、AIが生成したWebサイトを汎用的・人工的、あるいは必要以上に「デザインされた」見た目にしてしまう視覚パターンを記録するためのものです。
+This document records visual patterns that make AI-generated websites look generic, artificial, or unnecessarily designed.
 
-このリポジトリにおける研究ノート兼ローカルなデザインルールブックとして扱います。ルールは、一般的なデザイン助言を大量生成して作るのではなく、このサイトを実際にレビューし、改善する中で観測された事例から育てていきます。
+It is a research note and a local design rulebook for this repository. The rules should grow from actual observations made while reviewing and improving this site, not from bulk-generated generic design advice.
 
-目的は、現代的なWebデザインそのものを否定することではありません。AIが繰り返し選びがちなデフォルトを見つけ、なぜそれが汎用的に見えるのかを説明し、そのページ本来の目的に合う選択へ置き換えることです。
+The goal is not to reject modern web design. The goal is to notice recurring AI defaults, explain why they feel generic, and replace them with choices that fit the actual purpose of the page.
 
-## このドキュメントの使い方
+## How to use this document
 
-- 各ルールは、実際の観測に基づく制約として扱う。
-- AI生成で繰り返し現れるパターンを実際に確認したときにルールを追加する。
-- 大きな美学や宣言より、小さく具体的なルールを優先する。
-- 代替案を決める前に、なぜそのパターンが人工的に感じられるのかを記録する。
-- このファイルを一般的なWebデザインのベストプラクティス集にしない。
-- 実際の製品要件やユーザビリティ要件とルールが衝突する場合は、要件を優先する。
+- Treat each rule as an observation-backed constraint.
+- Add rules when a recurring AI-generated pattern is actually observed.
+- Prefer small, specific rules over broad aesthetic manifestos.
+- Record why a pattern feels artificial before prescribing a replacement.
+- Do not turn this file into a generic web-design best-practices checklist.
+- When a rule conflicts with a real product or usability requirement, the requirement wins.
 
-## Rule 1: 巨大なHeroセクションをデフォルトで使わない
+## Rule 1: Avoid oversized hero sections by default
 
 ### Pattern
 
-AIが生成するページでは、冒頭に大きなHeroセクションを置き、次の要素を複数まとめて配置する構成がよく見られます。
+A common AI-generated page starts with a large hero section containing several of the following at once:
 
-- タイトル上部の小さなeyebrowラベル
-- 画面を支配する巨大な`h1`
-- 短い補足文やlead文
-- 過剰な縦方向の余白
-- Hero直下の区切り線
-- Heroの直後に置かれるCTAやカード
+- a small eyebrow label above the title;
+- an oversized `h1` that dominates the viewport;
+- a short supporting lead sentence;
+- excessive vertical whitespace;
+- a divider below the hero;
+- an immediate CTA or card directly after the hero.
 
-この構成は、小規模なドキュメントサイト、個人ナレッジベース、ユーティリティ、社内ツール、単純なプロジェクト一覧のようなページにも、目的を問わず適用されがちです。
+This pattern is often applied even when the page is a small documentation site, personal knowledge base, utility, internal tool, or simple project index.
 
 ### Why it feels AI-generated
 
-見た目は整っていますが、そのページに必要な情報量や目的とは無関係に採用されていることが多くあります。
+The structure is visually polished but often unrelated to the information density or purpose of the page.
 
-その結果、どのサイトもランディングページのように見えやすくなります。最初の画面の大部分を自己紹介や演出に使い、実際に役立つ情報を見せるのが遅くなります。また、eyebrow、巨大見出し、lead、広い余白、CTAという同じ階層構造を繰り返すことで、本来まったく異なるプロジェクトまで同じ視覚言語に収束していきます。
+It tends to make every site resemble a landing page. The page spends a large amount of its first viewport announcing itself instead of showing useful content. Repeated use of the same hierarchy — eyebrow, giant heading, lead, whitespace, CTA — also makes unrelated projects converge on the same visual language.
 
-問題はHeroセクションそのものではありません。明確な理由がないのに、初期構成として自動的に採用することが問題です。
+The issue is not that hero sections are always bad. The issue is using them as a default composition without a clear reason.
 
 ### Preferred approach
 
-ドキュメント、ナレッジ、ユーティリティ、プロジェクト一覧のようなページでは、次を優先します。
+For documentation, knowledge, utility, and project-index pages:
 
-- Heroに明確な役割がない限り、通常のドキュメントヘッダやアプリケーションヘッダから始める。
-- 主見出しの大きさを、周囲の情報量とのバランスに合わせる。
-- 視覚的な階層を作るためだけにeyebrowテキストを追加しない。
-- 最初の画面を、空白による演出ではなく、役立つ情報やナビゲーションに使う。
-- 汎用的なランディングページ構成より、ページ本来の目的を反映した構造を選ぶ。
+- start with a normal document or application header unless a hero has a specific job;
+- keep the primary heading proportional to the amount of content around it;
+- do not add eyebrow text only to create visual hierarchy;
+- use the first viewport for useful information or navigation rather than empty presentation space;
+- prefer structure that reflects the page's purpose over a generic landing-page composition.
 
-キャンペーン的な訴求、強いビジュアルストーリーテリング、あるいは単一メッセージを第一印象として強く伝える必要が本当にある場合は、Heroセクションを使ってもよいものとします。ただし、それは意図的な例外であり、自動的な出発点にはしません。
+A hero section is acceptable when the page genuinely needs campaign-like communication, strong visual storytelling, or a single-message first impression. It should be a deliberate exception, not an automatic starting point.
 
 ## Status
 
-これは、今後増えていくガイドラインの最初の観測記録です。
+This is the first observation in an evolving set of guidelines.
 
-今後のルールは、このリポジトリで実際に作業する中で、繰り返し現れるAIデザイン特有のパターンを確認した場合にのみ追加します。
+Future rules should be added only as recurring AI-design patterns are identified in actual work on this repository.
