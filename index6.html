@@ -4,25 +4,145 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Ignorance Driven Learning</title>
-  <meta name="description" content="AIとの会話から得た、知らなかったことを記録するナレッジサイトです。">
+  <meta name="description" content="AIとの会話から理解できたことを記録するナレッジサイトです。">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
 </head>
 <body>
+  <header>
+    <nav class="navbar is-white has-shadow" aria-label="主要ナビゲーション">
+      <div class="container">
+        <div class="navbar-brand">
+          <a class="navbar-item has-text-weight-bold" href="./">Ignorance Driven Learning</a>
+        </div>
+
+        <div class="navbar-menu is-active">
+          <div class="navbar-end">
+            <div class="navbar-item">
+              <div class="field">
+                <div class="control">
+                  <input class="input is-rounded" type="search" placeholder="ナレッジを検索" aria-label="ナレッジを検索" disabled>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="has-background-white-bis">
+      <div class="container">
+        <div class="tabs mb-0">
+          <ul>
+            <li class="is-active"><a href="./knowledge/">ナレッジ</a></li>
+            <li><a aria-disabled="true">クイズ</a></li>
+            <li><a aria-disabled="true">レポート</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
   <main class="section">
     <div class="container">
-      <div class="content">
-        <h1>知らなかったことを記録する</h1>
-        <p>AIとの会話から理解できたことだけを残しています。</p>
-      </div>
+      <div class="columns is-variable is-6">
+        <div class="column is-8">
+          <section class="mb-6" aria-labelledby="latest-heading">
+            <div class="level mb-4">
+              <div class="level-left">
+                <h1 id="latest-heading" class="title is-4 mb-0">新しいナレッジ</h1>
+              </div>
+              <div class="level-right">
+                <a href="./knowledge/">すべて見る →</a>
+              </div>
+            </div>
 
-      <nav class="menu" aria-label="主要メニュー">
-        <p class="menu-label">メニュー</p>
-        <ul class="menu-list">
-          <li><a href="./knowledge/">ナレッジ</a></li>
-          <li><span>クイズ</span></li>
-          <li><span>レポート</span></li>
-        </ul>
-      </nav>
+            <article class="box">
+              <p class="is-size-7 has-text-grey mb-2">IT / AI / Hardware</p>
+              <h2 class="title is-5 mb-2">
+                <a href="./knowledge/it/local-llm-hardware-cost/">ローカルLLM用ハードウェアの価格感</a>
+              </h2>
+              <p class="mb-3">ローカルLLMは、体験用途と大型モデルを実用運用する場合で必要なハードウェアと予算が大きく異なる。</p>
+              <div class="tags">
+                <span class="tag">local-llm</span>
+                <span class="tag">ai-hardware</span>
+                <span class="tag">hardware-cost</span>
+              </div>
+            </article>
+
+            <article class="box">
+              <p class="is-size-7 has-text-grey mb-2">IT / AI / Hardware</p>
+              <h2 class="title is-5 mb-2">
+                <a href="./knowledge/it/dgx-spark/">DGX Spark</a>
+              </h2>
+              <p class="mb-3">NVIDIAが提供する、机上に置ける小型のAI開発向けコンピュータ。</p>
+              <div class="tags">
+                <span class="tag">nvidia</span>
+                <span class="tag">local-llm</span>
+                <span class="tag">cuda</span>
+              </div>
+            </article>
+
+            <article class="box">
+              <p class="is-size-7 has-text-grey mb-2">IT / Web / SNS</p>
+              <h2 class="title is-5 mb-2">
+                <a href="./knowledge/it/ogp/">OGP</a>
+              </h2>
+              <p class="mb-3">WebページをSNSなどで共有したときに、タイトル・説明・画像などをカード表示するためのメタ情報。</p>
+              <div class="tags">
+                <span class="tag">ogp</span>
+                <span class="tag">sns</span>
+                <span class="tag">web</span>
+              </div>
+            </article>
+          </section>
+
+          <section aria-labelledby="web-heading">
+            <div class="level mb-4">
+              <div class="level-left">
+                <h2 id="web-heading" class="title is-4 mb-0">Web</h2>
+              </div>
+            </div>
+
+            <div class="columns">
+              <div class="column">
+                <article class="box">
+                  <p class="is-size-7 has-text-grey mb-2">IT / Web / Privacy</p>
+                  <h3 class="title is-5 mb-2"><a href="./knowledge/it/opt-in/">opt-in</a></h3>
+                  <p>本人が事前に同意してから、配信や利用などを開始する方式。</p>
+                </article>
+              </div>
+              <div class="column">
+                <article class="box">
+                  <p class="is-size-7 has-text-grey mb-2">IT / Web / Privacy</p>
+                  <h3 class="title is-5 mb-2"><a href="./knowledge/it/opt-out/">opt-out</a></h3>
+                  <p>最初は有効で、利用者が後から停止・拒否を選ぶ方式。</p>
+                </article>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <aside class="column is-4">
+          <section class="mb-6" aria-labelledby="topics-heading">
+            <h2 id="topics-heading" class="title is-5">トピック</h2>
+            <div class="tags are-medium">
+              <span class="tag is-light">AI</span>
+              <span class="tag is-light">Hardware</span>
+              <span class="tag is-light">Web</span>
+              <span class="tag is-light">Privacy</span>
+              <span class="tag is-light">SNS</span>
+            </div>
+          </section>
+
+          <section aria-labelledby="about-heading">
+            <h2 id="about-heading" class="title is-5">このサイトについて</h2>
+            <div class="content">
+              <p>AIとの会話で理解できたことを、人が確認して記録しています。</p>
+              <p><a href="./knowledge/">ナレッジを見る →</a></p>
+            </div>
+          </section>
+        </aside>
+      </div>
     </div>
   </main>
 </body>
