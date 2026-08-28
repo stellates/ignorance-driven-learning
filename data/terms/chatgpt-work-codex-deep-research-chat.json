@@ -1,0 +1,16 @@
+{
+  "id": "chatgpt-work-codex-deep-research-chat",
+  "term": "ChatGPT Work / Codex / Deep Research / Chat の使い分け",
+  "reading": "チャットジーピーティー ワーク コーデックス ディープリサーチ チャット の つかいわけ",
+  "category": "IT / AI / Tools",
+  "summary": "ChatGPTの各作業モードは、単純なモデル性能差というより、情報や状態をどう扱うハーネスの違いとして見ると整理しやすい。WorkとCodexは途中状態を積み上げる型、Deep ResearchとChatは得たコンテキストを統合して回答へ丸め込む型として捉えられる。",
+  "explanation": "実務上は『どのモデルが一番賢いか』だけでなく、そのモデルにどんな作業環境・ツール・状態管理・反復ループが与えられているかが最終品質を大きく左右する。整理すると、Workは調査・分析・ファイル・成果物などの途中結果を積み上げながら最終成果物へ進む汎用作業ハーネス。Codexも同じく積み上げ型だが、正本がrepo・コード・テスト・Git差分・開発環境にある技術作業へ特化している。Deep Researchは大量の外部情報を探索し、引用付きの調査結果へ統合・圧縮する調査特化型。Chatは会話履歴や検索結果など、その場で得られる比較的限定されたコンテキストを使って回答する。したがって、1PRで閉じる開発作業ならWorkとCodexの差は小さくなりやすいが、複数PRをまたいでrepo状態を継続的に更新するならCodexが自然。一方、PRが業務成果物の一部にすぎず、文書・表・調査・資料など複数種類の成果物を横断するならWorkが向いている。Deep Researchは『調査そのものが成果物』で、引用やソース追跡を重視するときに強い。製品の実務性能は、モデル性能だけでなく、ハーネス設計・コンテキスト・ツール・評価や反復ループの組み合わせで決まると考えると理解しやすい。",
+  "example": "同じ『技術調査をして結論を出して』という依頼でも、Workは途中成果を積み上げながら資料化まで進めやすく、Deep Researchは大量ソースを集めて引用付きレポートへ統合し、Chatはその場の会話や検索結果を使って回答する。開発では『1PRならWork ≒ Codex、複数PRの継続ループならCodex、PRが成果物の一部ならWork』と考えると使い分けやすい。",
+  "asked_count": 1,
+  "confused_with": [],
+  "tags": ["chatgpt", "work", "codex", "deep-research", "chat", "agent", "harness", "context", "workflow", "orchestration"],
+  "status": "accepted",
+  "public": true,
+  "created_at": "2026-08-28",
+  "updated_at": "2026-08-28"
+}
