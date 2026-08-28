@@ -3,5 +3,6 @@
   "opt-out",
   "ogp",
   "dgx-spark",
-  "local-llm-hardware-cost"
+  "local-llm-hardware-cost",
+  "chatgpt-work-codex-deep-research-chat"
 ]
